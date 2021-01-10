@@ -1,4 +1,4 @@
-FROM php:alpine
+FROM 7.4.14-fpm
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
@@ -32,7 +32,7 @@ RUN pecl install \
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick
-RUN docker-php-ext-configure zip --with-libzip
+RUN docker-php-ext-configure zip
 RUN docker-php-ext-install \
     curl \
     iconv \
